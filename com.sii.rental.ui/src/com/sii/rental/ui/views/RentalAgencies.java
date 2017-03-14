@@ -3,9 +3,14 @@ package com.sii.rental.ui.views;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 
@@ -22,11 +27,32 @@ public class RentalAgencies {
 		tv.setLabelProvider(rp);
 		tv.setContentProvider(rp);
 		
+		
+		tv.addSelectionChangedListener(new ISelectionChangedListener() {
+			
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+
+				IStructuredSelection sel =(IStructuredSelection) event.getSelection();
+				selectionService.setSelection(sel.size()==1 ? sel .getFirstElement() : sel.toArray());
+				
+			}
+		});
+		
+		
 		ArrayList<RentalAgency> rgs=new ArrayList<RentalAgency>();
 		rgs.add(a);		
 		tv.setInput(rgs);
 		
+
+		
 		
 	}
+	
+	
+	@Inject
+	private ESelectionService selectionService;
+	
+
 
 }

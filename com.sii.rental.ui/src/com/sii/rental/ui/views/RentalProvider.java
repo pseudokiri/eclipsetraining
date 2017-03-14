@@ -3,14 +3,19 @@ package com.sii.rental.ui.views;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
 
 import com.opcoach.training.rental.Customer;
+import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalObject;
 
-public class RentalProvider extends LabelProvider implements ITreeContentProvider{
+public class RentalProvider extends LabelProvider implements ITreeContentProvider, IColorProvider{
 
 	
 	@Override
@@ -37,13 +42,6 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			};
 			
 		
-//		if(parentElement instanceof Customer) {	
-//			RentalObject ro =(RentalObject) parentElement;
-//			return new Node[] { new Node(Node.CUSTOMERS,a),
-//								new Node(Node.RENTALS,a),
-//								new Node(Node.OBJECTS,a),
-//			};
-				
 			
 				
 		}
@@ -113,6 +111,31 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return title;
 		}
 		
+	}
+
+
+
+	@Override
+	public Color getForeground(Object element) {
+		if(element instanceof RentalAgency)
+			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+		if(element instanceof Customer)
+			return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+		if(element instanceof RentalObject)
+			return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+		if(element instanceof Rental)
+			return Display.getCurrent().getSystemColor(SWT.COLOR_MAGENTA);
+		if(element instanceof Node)
+			return Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
+		
+		return Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
+		
+	}
+
+	@Override
+	public Color getBackground(Object element) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

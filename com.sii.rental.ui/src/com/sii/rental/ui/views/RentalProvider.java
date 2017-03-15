@@ -5,9 +5,14 @@ import java.util.Collection;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -16,6 +21,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+import com.opcoach.e4.preferences.ScopedPreferenceStore;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
@@ -118,6 +124,40 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			this.a = a;
 		}
 		
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((a == null) ? 0 : a.hashCode());
+			result = prime * result + ((title == null) ? 0 : title.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Node other = (Node) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (a == null) {
+				if (other.a != null)
+					return false;
+			} else if (!a.equals(other.a))
+				return false;
+			if (title == null) {
+				if (other.title != null)
+					return false;
+			} else if (!title.equals(other.title))
+				return false;
+			return true;
+		}
+
 		public Object[] getChildren() {
 			
 			switch (title) {
@@ -136,6 +176,10 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		public String toString() {			
 			return title;
 		}
+
+		private RentalProvider getOuterType() {
+			return RentalProvider.this;
+		}
 		
 	}
 
@@ -143,14 +187,18 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Color getForeground(Object element) {
+		
+		IPreferenceStore ps=new ScopedPreferenceStore(InstanceScope.INSTANCE,"com.sii.rental.ui");
+		
+		
 //		if(element instanceof RentalAgency)
 //			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
-//		if(element instanceof Customer)
-//			return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
-//		if(element instanceof RentalObject)
-//			return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
-//		if(element instanceof Rental)
-//			return Display.getCurrent().getSystemColor(SWT.COLOR_MAGENTA);
+		if(element instanceof Customer)
+			return getAColor(ps.getString(PREF_CUSTOMER_COLOR));
+		if(element instanceof RentalObject)
+			return getAColor(ps.getString(PREF_RENTAL_OBJECT_COLOR));
+		if(element instanceof Rental)
+			return getAColor(ps.getString(PREF_RENTAL_COLOR));
 //		if(element instanceof Node)
 //			return Display.getCurrent().getSystemColor(SWT.COLOR_YELLOW);
 //		
@@ -165,7 +213,19 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	}
 	
 	
-
+private Color getAColor(String rgbKey) {
+	
+	ColorRegistry colorRegistry=JFaceResources.getColorRegistry();
+	
+	Color col=colorRegistry.get(rgbKey);
+	if(col==null) {
+		colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
+		col=colorRegistry.get(rgbKey);
+		
+	}
+	return col;
+	
+}
 	
 	
 }

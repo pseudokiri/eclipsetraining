@@ -103,4 +103,11 @@ public RentalPart(Composite parent, RentalAgency a) {
 		setRental(r);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 }

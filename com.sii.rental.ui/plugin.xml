@@ -10,5 +10,19 @@
          </instanceof>
       </definition>
    </extension>
+   <extension
+         point="com.opcoach.e4.preferences.e4PreferencePages">
+      <page
+            class="com.sii.rental.ui.prefs.RentalColorPage"
+            id="com.sii.rental.ui.preferencesColors"
+            name="Colors">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.sii.rental.ui.prefs.RentalPrefInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -20,7 +21,7 @@ public class RentalAgencies {
 	
 	
 	@PostConstruct
-	public void createPartControl(Composite parent, RentalAgency a, IEclipseContext context) {
+	public void createPartControl(Composite parent, RentalAgency a, IEclipseContext context, EMenuService menuService) {
 		
 		TreeViewer tv=new TreeViewer(parent);
 		RentalProvider rp=ContextInjectionFactory.make(RentalProvider.class, context);
@@ -43,6 +44,7 @@ public class RentalAgencies {
 		ArrayList<RentalAgency> rgs=new ArrayList<RentalAgency>();
 		rgs.add(a);		
 		tv.setInput(rgs);
+		menuService.registerContextMenu(tv.getControl(), "com.sii.rental.eap.popupmenu.MessageAgency");
 		tv.expandAll();
 
 		

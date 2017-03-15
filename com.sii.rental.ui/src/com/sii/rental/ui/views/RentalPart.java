@@ -59,7 +59,7 @@ public RentalPart(Composite parent, RentalAgency a) {
 		
 		Label lblNewLabel = new Label(grpDatesDeLocation, SWT.NONE);
 		lblNewLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		lblNewLabel.setText("du :");
+		lblNewLabel.setText("du :");  
 		
 		lblNewLabel_1 = new Label(grpDatesDeLocation, SWT.NONE);
 		lblNewLabel_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));

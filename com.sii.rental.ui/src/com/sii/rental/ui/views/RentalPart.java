@@ -63,7 +63,7 @@ public RentalPart(Composite parent, RentalAgency a) {
 		
 		lblNewLabel_1 = new Label(grpDatesDeLocation, SWT.NONE);
 		lblNewLabel_1.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		lblNewLabel_1.setText("15/03/2011");
+		//lblNewLabel_1.setText("15/03/2011");
 		
 		Label lblNewLabel_2 = new Label(grpDatesDeLocation, SWT.NONE);
 		lblNewLabel_2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -71,7 +71,7 @@ public RentalPart(Composite parent, RentalAgency a) {
 		
 		lblNewLabel_3 = new Label(grpDatesDeLocation, SWT.NONE);
 		lblNewLabel_3.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, true, false, 1, 1));
-		lblNewLabel_3.setText("22/03/2011");
+		//lblNewLabel_3.setText("22/03/2011");
 
 		
 		//setRental(RentalCoreActivator.getAgency().getRentals().get(0));

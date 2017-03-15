@@ -43,7 +43,7 @@ public class RentalAgencies {
 		ArrayList<RentalAgency> rgs=new ArrayList<RentalAgency>();
 		rgs.add(a);		
 		tv.setInput(rgs);
-		
+		tv.expandAll();
 
 		
 		

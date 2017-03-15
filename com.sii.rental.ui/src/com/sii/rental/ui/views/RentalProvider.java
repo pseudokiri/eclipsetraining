@@ -107,7 +107,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	
 	
 	class Node {
-		private static final String CUSTOMERS = "Customers";
+		private static final String CUSTOMERS = "Clients";
 		private static final String RENTALS = "Locations";
 		private static final String OBJECTS = "Objets à louer";
 		private String title;

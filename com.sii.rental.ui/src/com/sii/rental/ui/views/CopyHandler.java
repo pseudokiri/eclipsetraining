@@ -4,6 +4,7 @@ import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.swt.dnd.Clipboard;
@@ -30,8 +31,9 @@ public class CopyHandler {
 	}
 
 	@Execute
-	public void execute(@Named(IServiceConstants.ACTIVE_SELECTION) Customer customer) {
+	public void execute(@Named(IServiceConstants.ACTIVE_SELECTION) Customer customer, IEventBroker broker) {
 
+		broker.send("customer/copy", customer);		
 		Clipboard clipboard = new Clipboard(Display.getCurrent());
 		String textData = customer.getDisplayName();
 		String rtfData = "{\\rtf1\\b\\i "+ customer.getDisplayName();

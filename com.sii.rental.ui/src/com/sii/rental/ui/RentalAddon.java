@@ -1,12 +1,18 @@
 package com.sii.rental.ui;
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
 import com.sii.rental.core.RentalCoreActivator;
 
@@ -35,6 +41,29 @@ public class RentalAddon implements RentalUIConstants{
 		
 		
 	}
+	
+	@Inject
+	@Optional
+	void reactOnRentalEvent(@UIEventTopic("customer/copy") Customer customer) {
+		System.out.println(customer.getDisplayName());
+		
+	}
+	
+	
+	@Inject
+	public void getExtensionsQuickAccess(IExtensionRegistry reg) {
+		
+		String plugIn="org.eclipse.e4.workbench.model";
+		for(IConfigurationElement elt : reg.getConfigurationElementsFor(plugIn)) {
+			//String attValue=elt.getAttribute(name);
+			
+			System.out.println("Found : "+elt.getName() + " in "+plugIn);// + " with attr="+attValue);
+			if(elt.getName().contentEquals("fragment")) System.out.println(" uri :"+ elt.getAttribute("uri")) ;
+			if(elt.getName().contentEquals("processor")) System.out.println(" class :"+ elt.getAttribute("class")) ;
+		}
+		
+	}
+	
 	
 	
 }

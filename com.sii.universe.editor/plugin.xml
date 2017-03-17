@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated universe -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.sii.universe.universe.presentation.UniverseModelWizardID"
+            name="%_UI_UniverseModelWizard_label"
+            class="com.sii.universe.universe.presentation.UniverseModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/UniverseModelFile.gif">
+         <description>%_UI_UniverseModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated universe -->
+      <editor
+            id="com.sii.universe.universe.presentation.UniverseEditorID"
+            name="%_UI_UniverseEditor_label"
+            icon="icons/full/obj16/UniverseModelFile.gif"
+            extensions="universe"
+            class="com.sii.universe.universe.presentation.UniverseEditor"
+            contributorClass="com.sii.universe.universe.presentation.UniverseActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

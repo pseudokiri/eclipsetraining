@@ -5,7 +5,8 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>universe.ecore</foreignModel>
-  <genPackages prefix="Universe" disposableProviderFactory="true" ecorePackage="universe.ecore#/">
+  <genPackages prefix="Universe" basePackage="com.sii.universe" disposableProviderFactory="true"
+      ecorePackage="universe.ecore#/">
     <genClasses ecoreClass="universe.ecore#//Universe">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Universe/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference universe.ecore#//Universe/galaxies"/>
@@ -46,7 +47,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference universe.ecore#//SolarSystem/planets"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//SolarSystem/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//SolarSystem/position"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Galaxy/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

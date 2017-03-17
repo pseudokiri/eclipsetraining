@@ -81,7 +81,7 @@ public class RentalAddon implements RentalUIConstants{
 		Palette pal;
 		
 		for(IConfigurationElement elt : reg.getConfigurationElementsFor(plugIn)) {
-			//String attValue=elt.getAttribute(name);
+			
 			
 			pal=new Palette();
 			pal.setId(elt.getAttribute("id"));

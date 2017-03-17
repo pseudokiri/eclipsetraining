@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.sii.universe/src" modelPluginID="com.sii.universe"
+    modelName="Universe" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>universe.ecore</foreignModel>
+  <genPackages prefix="Universe" disposableProviderFactory="true" ecorePackage="universe.ecore#/">
+    <genClasses ecoreClass="universe.ecore#//Universe">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Universe/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference universe.ecore#//Universe/galaxies"/>
+    </genClasses>
+    <genClasses ecoreClass="universe.ecore#//Galaxy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Galaxy/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Galaxy/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Galaxy/VelocityFromUniverseCenter"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference universe.ecore#//Galaxy/blackHoles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference universe.ecore#//Galaxy/solarsystem"/>
+    </genClasses>
+    <genClasses ecoreClass="universe.ecore#//Star">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Star/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Star/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Star/rotationDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Star/mass"/>
+    </genClasses>
+    <genClasses ecoreClass="universe.ecore#//Planet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Planet/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Planet/position"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference universe.ecore#//Planet/satellites"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Planet/rotationDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Planet/revolutionDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Planet/mass"/>
+    </genClasses>
+    <genClasses ecoreClass="universe.ecore#//Satellite">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Satellite/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Satellite/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Satellite/rotationDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Satellite/revolutionDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Satellite/mass"/>
+    </genClasses>
+    <genClasses ecoreClass="universe.ecore#//BlackHole">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//BlackHole/position"/>
+    </genClasses>
+    <genClasses ecoreClass="universe.ecore#//SolarSystem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference universe.ecore#//SolarSystem/solar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference universe.ecore#//SolarSystem/planets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//SolarSystem/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//SolarSystem/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute universe.ecore#//Galaxy/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
